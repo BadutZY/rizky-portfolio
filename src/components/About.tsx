@@ -20,11 +20,11 @@ const About = () => {
   return (
     <section
       id="about"
-      className="section-padding bg-background"
+      className="section-padding bg-background overflow-x-hidden"
       role="region"
       aria-labelledby="about-title"
     >
-      <div className="container">
+      <div className="container mx-auto px-4 overflow-hidden">
         <div 
           ref={sectionRef}
           className={`fade-in ${sectionVisible ? 'show' : ''}`}
@@ -32,28 +32,28 @@ const About = () => {
           <h2 id="about-title" className="section-title">About Me</h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mt-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mt-12 items-center px-1 sm:px-0">
           {/* Profile Image */}
           <figure
             ref={imageRef}
             className={`fade-in ${imageVisible ? 'show' : ''}`}
           >
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative group overflow-visible px-2 sm:px-0">
+              
+              {/* Blur effect (boleh terpotong) */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <div className="relative overflow-hidden rounded-2xl shadow-card group-hover:shadow-card-hover transition-all duration-500">
-
-                {/* IMAGE FULL */}
+              {/* Konten utama */}
+              <div className="relative overflow-hidden rounded-2xl shadow-card transition-all duration-500">
                 <div className="relative aspect-square w-full">
                   <img
                     src={profile}
                     alt="Rizky Maulana Putra Profile Picture"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-
               </div>
+
             </div>
           </figure>
 
@@ -81,7 +81,7 @@ const About = () => {
                 return (
                   <div
                     key={item.label}
-                    className={`bg-card rounded-xl overflow-hidden transition-all duration-300 ${
+                    className={`bg-card rounded-xl overflow-hidden max-w-full transition-all duration-300 ${
                       item.expandable ? 'cursor-pointer hover:bg-muted' : ''
                     }`}
                     onClick={() => item.expandable && setExpandedItem(isExpanded ? null : index)}
@@ -92,7 +92,7 @@ const About = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <dt className="text-sm text-foreground-muted">{item.label}</dt>
-                        <dd className="font-semibold text-foreground truncate">{item.value}</dd>
+                        <dd className="font-semibold text-foreground break-words">{item.value}</dd>
                       </div>
                       {item.expandable && (
                         <ChevronDown 
