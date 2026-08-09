@@ -114,7 +114,7 @@ export default function LoadingScreen({ onDone }: { onDone: () => void }) {
               className="pixel-title text-foreground"
               style={{ fontSize: "clamp(18px, 6vw, 28px)" }}
             >
-              BADUTZY
+              RIZKY
             </h1>
             <p className="pixel-label mt-4 text-muted-foreground" style={{ fontSize: 9 }}>
               {t("loading.subtitle")}
