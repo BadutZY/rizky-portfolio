@@ -1,0 +1,611 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --font-display: "Press Start 2P", monospace;
+  --font-body: "VT323", monospace;
+}
+
+:root {
+  --radius: 0px;
+  /* light monochrome */
+  --background: oklch(0.965 0 0);
+  --foreground: oklch(0.18 0 0);
+  --surface: oklch(0.99 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0 0);
+  --primary: oklch(0.22 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.78 0 0);
+  --secondary-foreground: oklch(0.18 0 0);
+  --muted: oklch(0.925 0 0);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.86 0 0);
+  --accent-foreground: oklch(0.18 0 0);
+  --destructive: oklch(0.42 0 0);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.18 0 0);
+  --input: oklch(0.18 0 0);
+  --ring: oklch(0.35 0 0);
+  --ink: oklch(0.18 0 0);
+  --pixel-shadow: oklch(0.18 0 0);
+  --title-shadow: oklch(0.84 0 0);
+  --grid-line: oklch(0.18 0 0 / 0.08);
+  --scan-line: oklch(0.18 0 0 / 0.045);
+}
+
+.dark {
+  --background: oklch(0.16 0 0);
+  --foreground: oklch(0.97 0 0);
+  --surface: oklch(0.22 0 0);
+  --card: oklch(0.22 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.22 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.16 0 0);
+  --secondary: oklch(0.42 0 0);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.29 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --accent: oklch(0.36 0 0);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.75 0 0);
+  --destructive-foreground: oklch(0.16 0 0);
+  --border: oklch(0.62 0 0);
+  --input: oklch(0.62 0 0);
+  --ring: oklch(0.8 0 0);
+  --ink: oklch(0.97 0 0);
+  --pixel-shadow: oklch(0.08 0 0);
+  --title-shadow: oklch(0.08 0 0);
+  --grid-line: oklch(0.97 0 0 / 0.08);
+  --scan-line: oklch(0 0 0 / 0.14);
+}
+
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    border-radius: 0 !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  html,
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 1.45;
+    -webkit-font-smoothing: none;
+    font-smooth: never;
+  }
+  /* ── Mobile scale-down ──
+     Nearly all spacing/padding/gap and body copy across the site is
+     defined with Tailwind's rem-based utilities, which resolve against
+     this root font-size. Shrinking it on small screens proportionally
+     tightens every section's padding, gaps and paragraph text at once,
+     so things feel "pas" on a phone instead of oversized. */
+  @media (max-width: 640px) {
+    html, body { font-size: 16.5px; }
+  }
+  @media (max-width: 400px) {
+    html, body { font-size: 15px; }
+  }
+  body {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+  img, svg {
+    image-rendering: pixelated;
+  }
+  ::selection {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: var(--muted); }
+  ::-webkit-scrollbar-thumb { background: var(--primary); border: 3px solid var(--background); }
+
+  /* ── Interactive elements always show a pointer cursor on hover ── */
+  a,
+  button:not(:disabled),
+  [role="button"],
+  summary,
+  select,
+  label[for] {
+    cursor: pointer;
+  }
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+@layer components {
+  /* ── Pixel corner clipping ── */
+  .pixel-corners {
+    clip-path: polygon(
+      0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+      calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+      100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+      8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+    );
+  }
+
+  .pixel-panel {
+    background: var(--surface);
+    border: 4px solid var(--border);
+    box-shadow: 8px 8px 0 0 var(--pixel-shadow);
+    position: relative;
+  }
+
+  .pixel-card {
+    background: var(--card);
+    border: 4px solid var(--border);
+    box-shadow: 6px 6px 0 0 var(--pixel-shadow);
+    transition: transform 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), box-shadow 0.12s cubic-bezier(0.22, 0.9, 0.25, 1);
+  }
+  .pixel-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 0 var(--pixel-shadow);
+  }
+
+  .pixel-inset {
+    background: var(--muted);
+    border: 4px solid var(--border);
+  }
+
+  /* ── Buttons ── */
+  .pixel-btn {
+    font-family: var(--font-display);
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    border: 4px solid var(--border);
+    background: var(--primary);
+    color: var(--primary-foreground);
+    box-shadow: 6px 6px 0 0 var(--pixel-shadow);
+    transition: transform 0.08s cubic-bezier(0.22, 0.9, 0.25, 1), box-shadow 0.08s cubic-bezier(0.22, 0.9, 0.25, 1);
+    user-select: none;
+  }
+  .pixel-btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--pixel-shadow); }
+  .pixel-btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 0 var(--pixel-shadow); }
+  .pixel-btn-alt { background: var(--secondary); color: var(--secondary-foreground); }
+  .pixel-btn-ghost { background: var(--surface); color: var(--foreground); }
+
+  /* ── Badges / tags ── */
+  .pixel-tag {
+    font-family: var(--font-display);
+    font-size: 9px;
+    text-transform: uppercase;
+    padding: 7px 9px;
+    border: 3px solid var(--border);
+    background: var(--muted);
+    color: var(--foreground);
+    display: inline-block;
+  }
+  .pixel-tag-accent { background: var(--accent); color: var(--accent-foreground); }
+  .pixel-tag-primary { background: var(--primary); color: var(--primary-foreground); }
+  .pixel-tag-secondary { background: var(--secondary); color: var(--secondary-foreground); }
+
+  /* ── Text helpers ── */
+  .pixel-title {
+    font-family: var(--font-display);
+    text-shadow: 4px 4px 0 var(--title-shadow);
+  }
+  .pixel-label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .body-text { font-size: 1.15rem; line-height: 1.4; }
+
+  /* ── Dividers ── */
+  .pixel-rule {
+    height: 8px;
+    background-image: repeating-linear-gradient(
+      90deg, var(--border) 0 8px, transparent 8px 16px
+    );
+  }
+  .pixel-rule-accent {
+    height: 8px;
+    background-image: repeating-linear-gradient(
+      90deg, var(--secondary) 0 8px, transparent 8px 16px
+    );
+  }
+
+  /* ── Progress bar (skills) ── */
+  .pixel-meter {
+    height: 24px;
+    border: 4px solid var(--border);
+    background: var(--muted);
+    padding: 3px;
+  }
+  .pixel-meter > i {
+    display: block;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+      90deg, var(--secondary) 0 10px, transparent 10px 14px
+    );
+    background-color: transparent;
+    animation: meter-grow 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* ── Scanline overlay ── */
+  .crt-lines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg, var(--scan-line) 0 2px, transparent 2px 4px
+    );
+  }
+
+  /* ── Dock navbar (bottom, icon-only, collapsible) ── */
+  /* Ukuran default = tampilan desktop, diperbesar agar lebih terlihat.
+     Ukuran mobile/kecil diatur ulang di media query paling bawah. */
+  .dock-brand {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 4px solid var(--border);
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    box-shadow: 4px 4px 0 0 var(--pixel-shadow);
+    transition: transform 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), box-shadow 0.12s cubic-bezier(0.22, 0.9, 0.25, 1);
+  }
+  .dock-brand:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 var(--pixel-shadow); }
+  .dock-brand:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 var(--pixel-shadow); }
+
+  /* ── Tombol tema (terpisah dari navbar), pojok kanan atas ── */
+  .theme-toggle-fixed {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 4px solid var(--border);
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    cursor: pointer;
+    box-shadow: 4px 4px 0 0 var(--pixel-shadow);
+    transition: transform 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), box-shadow 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), background 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), color 0.12s cubic-bezier(0.22, 0.9, 0.25, 1);
+  }
+  .theme-toggle-fixed:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--pixel-shadow);
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+  .theme-toggle-fixed:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 var(--pixel-shadow); }
+
+  /* ── Tombol bahasa, di sebelah kiri tombol tema ── */
+  .lang-toggle-fixed {
+    position: fixed;
+    top: 20px;
+    right: 84px;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 4px solid var(--border);
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    cursor: pointer;
+    box-shadow: 4px 4px 0 0 var(--pixel-shadow);
+    transition: transform 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), box-shadow 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), background 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), color 0.12s cubic-bezier(0.22, 0.9, 0.25, 1);
+  }
+  .lang-toggle-fixed .pixel-label { font-size: 12px; }
+  .lang-toggle-fixed:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--pixel-shadow);
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+  .lang-toggle-fixed:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 var(--pixel-shadow); }
+
+  .dock-pill {
+    position: fixed;
+    left: 50%;
+    bottom: 50px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 4px solid var(--border);
+    background: var(--surface);
+    box-shadow: 6px 6px 0 0 var(--pixel-shadow);
+    transform: translateX(-50%);
+    transition: transform 0.5s cubic-bezier(0.22, 0.9, 0.25, 1);
+  }
+  /* posisi mengecil: geser dari tengah ke pojok kanan-bawah */
+  .dock-pill[data-open="false"] {
+    transform: translateX(calc(50vw - 92px));
+  }
+
+  .dock-item {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    margin-right: 8px;
+    border: 3px solid transparent;
+    background: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition:
+      width 0.4s cubic-bezier(0.22, 0.9, 0.25, 1) var(--dock-delay, 0ms),
+      margin-right 0.4s cubic-bezier(0.22, 0.9, 0.25, 1) var(--dock-delay, 0ms),
+      opacity 0.3s ease var(--dock-delay, 0ms),
+      background 0.12s cubic-bezier(0.22, 0.9, 0.25, 1) 0ms,
+      color 0.12s cubic-bezier(0.22, 0.9, 0.25, 1) 0ms,
+      border-color 0.12s cubic-bezier(0.22, 0.9, 0.25, 1) 0ms,
+      transform 0.12s cubic-bezier(0.22, 0.9, 0.25, 1) 0ms;
+  }
+  .dock-item:hover,
+  .dock-item[data-active="true"] {
+    color: var(--foreground);
+    background: var(--muted);
+    border-color: var(--border);
+    transform: translateY(-5px);
+  }
+  .dock-item[data-active="true"] {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+  /* saat disembunyikan: semua item kolaps serentak (tanpa delay) jadi 0 lebar */
+  .dock-pill[data-open="false"] .dock-item {
+    width: 0;
+    margin-right: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transition-delay: 0ms;
+  }
+
+  .dock-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    white-space: nowrap;
+    font-family: var(--font-display);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 7px 10px;
+    border: 3px solid var(--border);
+    background: var(--surface);
+    color: var(--foreground);
+    box-shadow: 4px 4px 0 0 var(--pixel-shadow);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(4px);
+    transition: opacity 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), transform 0.12s cubic-bezier(0.22, 0.9, 0.25, 1);
+  }
+  .dock-item:hover .dock-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dock-toggle {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    flex: none;
+    border: 3px solid var(--border);
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    cursor: pointer;
+    transition: transform 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), background 0.12s cubic-bezier(0.22, 0.9, 0.25, 1), color 0.12s cubic-bezier(0.22, 0.9, 0.25, 1);
+  }
+  .dock-toggle:hover { transform: translateY(-5px); background: var(--accent); color: var(--accent-foreground); }
+  .dock-toggle:active { transform: translateY(0); }
+
+  /* Tampilan tablet/mobile: kembali ke ukuran yang lebih ringkas seperti semula */
+  @media (max-width: 767px) {
+    .dock-brand { top: 16px; left: 16px; width: 40px; height: 40px; }
+    .theme-toggle-fixed { top: 16px; right: 16px; width: 40px; height: 40px; }
+    .lang-toggle-fixed { top: 16px; right: 64px; width: 40px; height: 40px; }
+    .lang-toggle-fixed .pixel-label { font-size: 10px; }
+    .dock-pill { bottom: 28px; padding: 6px; }
+    .dock-pill[data-open="false"] { transform: translateX(calc(50vw - 72px)); }
+    .dock-item { width: 44px; height: 44px; margin-right: 6px; }
+    .dock-toggle { width: 44px; height: 44px; }
+    .dock-tooltip { font-size: 8px; padding: 6px 8px; }
+  }
+
+  @media (max-width: 480px) {
+    .dock-item { width: 38px; height: 38px; margin-right: 4px; }
+    .dock-toggle { width: 38px; height: 38px; }
+    .dock-pill { padding: 4px; }
+    .dock-pill[data-open="false"] { transform: translateX(calc(50vw - 62px)); }
+    .dock-tooltip { font-size: 7px; padding: 5px 6px; }
+    .theme-toggle-fixed { top: 12px; right: 12px; width: 36px; height: 36px; }
+    .lang-toggle-fixed { top: 12px; right: 54px; width: 36px; height: 36px; }
+    .lang-toggle-fixed .pixel-label { font-size: 9px; }
+  }
+}
+
+@layer utilities {
+  .step-hover { transition-timing-function: cubic-bezier(0.22, 0.9, 0.25, 1) !important; }
+}
+
+/* ── Smooth slide-down/up collapse (dropdown, accordion, detail panel) ──
+   Uses the grid-template-rows 0fr → 1fr trick so height animates smoothly
+   without measuring pixel heights in JS. Wrap content in one child element. */
+.pixel-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s cubic-bezier(0.22, 0.9, 0.25, 1);
+}
+.pixel-collapse[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.pixel-collapse > * {
+  overflow: hidden;
+  min-height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pixel-collapse { transition: none !important; }
+}
+
+/* ══════════ Pixel animations (smooth, optimized) ══════════ */
+@keyframes meter-grow { from { width: 0%; } }
+
+@keyframes pixel-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.anim-blink { animation: pixel-blink 1s ease-in-out infinite; }
+
+@keyframes pixel-bob {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-6px); }
+  50% { transform: translateY(-9px); }
+  75% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+.anim-bob { animation: pixel-bob 1.6s ease-in-out infinite; }
+
+@keyframes pixel-arrow {
+  0% { transform: translateY(0); }
+  33% { transform: translateY(6px); }
+  66% { transform: translateY(12px); }
+  100% { transform: translateY(0); }
+}
+.anim-arrow { animation: pixel-arrow 1.2s ease-in-out infinite; }
+
+@keyframes pixel-in {
+  0%   { opacity: 0; transform: translateY(16px); }
+  40%  { opacity: 1; transform: translateY(8px); }
+  70%  { opacity: 1; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.anim-in {
+  animation: pixel-in 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes pixel-pop {
+  0%   { opacity: 0; transform: scale(0.6); }
+  50%  { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.anim-pop {
+  animation: pixel-pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes pixel-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.anim-marquee { animation: pixel-marquee 18s linear infinite; }
+
+@keyframes caret { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+
+/* ── Gallery lightbox: open/close + slide between photos ── */
+@keyframes lightbox-photo-next {
+  0%   { opacity: 0; transform: translateX(36px) scale(0.97); }
+  60%  { opacity: 1; transform: translateX(-4px) scale(1); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes lightbox-photo-prev {
+  0%   { opacity: 0; transform: translateX(-36px) scale(0.97); }
+  60%  { opacity: 1; transform: translateX(4px) scale(1); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+.anim-photo-next { animation: lightbox-photo-next 0.32s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-photo-prev { animation: lightbox-photo-prev 0.32s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .anim-photo-next, .anim-photo-prev { animation: none !important; }
+}
+
+/* ── Theme wipe overlay ── */
+.pixel-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-auto-rows: var(--cell);
+  pointer-events: none;
+}
+.pixel-wipe > span {
+  background: var(--wipe-color);
+  transform: scale(0);
+  animation: wipe-in 0.16s ease-out forwards;
+  animation-delay: var(--d);
+  /* slight negative outset so adjacent cells overlap a hair and
+     hide the subpixel rounding gaps that show up between CSS Grid
+     tracks (1fr columns) at scale(1) — fixes the faint grid lines
+     visible during the theme transition */
+  outline: 1px solid var(--wipe-color);
+  outline-offset: -0.5px;
+}
+.pixel-wipe[data-phase="out"] > span {
+  transform: scale(1.06);
+  animation-name: wipe-out;
+}
+@keyframes wipe-in { to { transform: scale(1.06); } }
+@keyframes wipe-out { from { transform: scale(1.06); } to { transform: scale(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-in, .anim-pop, .anim-bob, .anim-arrow, .anim-marquee, .anim-blink { animation: none !important; }
+}

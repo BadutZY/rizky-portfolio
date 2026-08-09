@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rizky (BadutZY) - Official Website</title>
+    <meta
+      name="description"
+      content="Portfolio pixel-art BadutZY: frontend developer dan siswa RPL. Lihat profil, skill, dan project terbaru."
+    />
+    <meta name="author" content="BadutZY" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/icon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+    />
+
+    <!--
+      Terapkan tema & bahasa tersimpan sebelum React mount, supaya tidak ada
+      kedipan (flash) ke tema/bahasa default saat halaman di-refresh.
+    -->
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("badutzy-theme");
+          var lang = localStorage.getItem("badutzy-language");
+          document.documentElement.classList.toggle("dark", theme !== "light");
+          document.documentElement.lang = lang === "id" ? "id" : "en";
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
