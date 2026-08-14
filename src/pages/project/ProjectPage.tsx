@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHeader, PageShell, SectionTitle } from "@/components/layout/PageShell";
 import {
   PixelArrowRight,

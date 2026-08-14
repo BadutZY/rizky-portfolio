@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import {
   Home,
   User,
@@ -29,7 +29,7 @@ const CENTER = (ITEM_COUNT - 1) / 2;
 
 export default function Navbar() {
   const [open, setOpen] = useState(true);
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { pathname } = useLocation();
   const { t } = useLanguage();
 
   return (

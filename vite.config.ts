@@ -1,20 +1,20 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import tsConfigPaths from "vite-tsconfig-paths";
-import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import tsconfigPaths from "vite-tsconfig-paths";
+import path from "path";
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    tsConfigPaths(),
-    tanstackRouter({
-      target: "react",
-      autoCodeSplitting: true,
-    }),
-    react(),
-    tailwindcss(),
-  ],
-  build: {
-    outDir: "dist",
+  // .jfif tidak termasuk daftar aset bawaan Vite — daftarkan manual.
+  assetsInclude: ["**/*.jfif"],
+  plugins: [react(), tailwindcss(), tsconfigPaths()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    host: true,
   },
 });

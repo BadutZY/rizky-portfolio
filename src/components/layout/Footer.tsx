@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PixelHeart } from "@/components/common/PixelIcon";
 import SocialIcon from "@/components/common/SocialIcon";
 import { socialLinks } from "@/data/contact";

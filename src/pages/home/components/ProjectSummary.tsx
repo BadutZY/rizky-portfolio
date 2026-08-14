@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { SectionTitle } from "@/components/layout/PageShell";
 import { PixelArrowRight, PixelFolder } from "@/components/common/PixelIcon";
 import { featuredProjects } from "@/data/home";

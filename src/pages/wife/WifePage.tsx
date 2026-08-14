@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHeader, PageShell } from "@/components/layout/PageShell";
 import { PixelArrowRight, PixelHeart } from "@/components/common/PixelIcon";
 import { wife } from "@/data/wife";

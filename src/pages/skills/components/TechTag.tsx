@@ -1,4 +1,4 @@
-import { PixelChevronDown, PixelChevronRight } from "@/components/common/PixelIcon";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { techDescriptions } from "@/data/skills";
 import { resolveTechLogo } from "./skillCodeSnippets";
 
@@ -24,7 +24,11 @@ export function TechTag({
     >
       {info && <img src={resolveTechLogo(info.logo)} alt={name} className="h-3.5 w-3.5 shrink-0" />}
       <span>{name}</span>
-      {isOpen ? <PixelChevronDown size={10} /> : <PixelChevronRight size={10} />}
+      {isOpen ? (
+        <ChevronDown size={14} strokeWidth={2.5} />
+      ) : (
+        <ChevronRight size={14} strokeWidth={2.5} />
+      )}
     </button>
   );
 }

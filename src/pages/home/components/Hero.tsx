@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { rizkyImages } from "@/data/image";
 import { profile } from "@/data/home";
 import { PixelArrowRight } from "@/components/common/PixelIcon";

@@ -609,3 +609,85 @@
 @media (prefers-reduced-motion: reduce) {
   .anim-in, .anim-pop, .anim-bob, .anim-arrow, .anim-marquee, .anim-blink { animation: none !important; }
 }
+/* ────────────────────────────────────────────────────────────────
+   CUSTOM PIXEL CURSOR  (dipakai oleh src/components/common/PixelCursor.tsx)
+   Warna diambil dari token tema, jadi ikut berubah saat light/dark.
+   ──────────────────────────────────────────────────────────────── */
+:root {
+  --cursor-fill: oklch(0.18 0 0);
+  --cursor-stroke: oklch(0.99 0 0);
+}
+
+.dark {
+  --cursor-fill: oklch(0.97 0 0);
+  --cursor-stroke: oklch(0.1 0 0);
+}
+
+/* Sembunyikan cursor OS hanya kalau custom cursor aktif (pointer: fine). */
+html.pixel-cursor-on,
+html.pixel-cursor-on * {
+  cursor: none !important;
+}
+
+.pixel-cursor-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  will-change: transform;
+  transition: opacity 120ms linear;
+}
+
+.pixel-cursor-art {
+  position: relative;
+  image-rendering: pixelated;
+  transform-origin: center center;
+  filter: drop-shadow(2px 2px 0 var(--cursor-stroke));
+}
+
+.pixel-cursor-art.is-pressed {
+  transform: scale(0.9);
+}
+
+/* Hourglass loading: berputar per-step biar tetap terasa pixel/retro. */
+.pixel-cursor-art.is-spinning {
+  animation: pixel-cursor-spin 1.28s steps(8, end) infinite;
+}
+
+@keyframes pixel-cursor-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Percikan saat klik. */
+.pixel-cursor-sparks {
+  position: absolute;
+  left: -10px;
+  top: -14px;
+  animation: pixel-cursor-spark 260ms steps(3, end) forwards;
+}
+
+@keyframes pixel-cursor-spark {
+  from {
+    opacity: 1;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-cursor-art.is-spinning {
+    animation-duration: 3s;
+  }
+  .pixel-cursor-sparks {
+    display: none;
+  }
+}
