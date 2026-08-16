@@ -1,4 +1,4 @@
-import { Youtube, Instagram, Github } from "lucide-react";
+import { Youtube, Instagram, Github, Globe } from "lucide-react";
 import { platformLogos } from "@/data/image";
 
 interface IconProps {
@@ -103,6 +103,7 @@ const ICONS: Record<string, (p: IconProps) => React.ReactNode> = {
   YouTube: (p) => <Youtube size={p.size ?? 18} className={p.className ?? ""} strokeWidth={2} />,
   Instagram: (p) => <Instagram size={p.size ?? 18} className={p.className ?? ""} strokeWidth={2} />,
   GitHub: (p) => <Github size={p.size ?? 18} className={p.className ?? ""} strokeWidth={2} />,
+  Website: (p) => <Globe size={p.size ?? 18} className={p.className ?? ""} strokeWidth={2} />,
   X: XIcon,
   TikTok: TikTokIcon,
   Threads: ThreadsIcon,

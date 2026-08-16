@@ -99,9 +99,6 @@ export default function LivePreview() {
   const [fullscreen, setFullscreen] = useState(false);
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
-  // On a real mobile screen there isn't room to usefully preview the
-  // desktop/tablet breakpoints inside the widget, so the viewport toggle
-  // is locked to "mobile" — only that option is shown and selected.
   useEffect(() => {
     const mql = window.matchMedia("(max-width: 639px)");
     const onChange = () => setIsMobileScreen(mql.matches);

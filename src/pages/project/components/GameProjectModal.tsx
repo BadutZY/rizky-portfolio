@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { Globe } from "lucide-react";
 import {
   PixelClose,
   PixelDownload,
@@ -14,7 +15,6 @@ import {
   PixelUsers,
   PixelFork,
   PixelBuilding,
-  PixelGlobe,
   PixelPackage,
 } from "@/components/common/PixelIcon";
 import MarkdownRenderer from "@/pages/project/components/MarkdownRenderer";
@@ -56,7 +56,7 @@ const SOCIAL_ICON: Record<SocialLink["platform"], React.ReactNode> = {
   tiktok: <YouTubeIcon />,
   instagram: <InstagramIcon />,
   github: <GitHubMarkIcon />,
-  website: <PixelGlobe size={14} />,
+  website: <Globe className="h-3.5 w-3.5" strokeWidth={2} />,
 };
 
 const SocialPill = ({ social }: { social: SocialLink }) => (

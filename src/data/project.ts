@@ -62,7 +62,7 @@ export const REGULAR_WEBSITE_PROJECTS: WebsiteProject[] = [
     category: "Website",
     lang: "TypeScript / React / Tailwind",
     image: projectImages["class-website"]!,
-    link: "https://xi-rpl-2.vercel.app/",
+    link: "https://rpl2.vercel.app/",
     description: "Class website",
     fullDescription: "Website for my class schedule and duty schedule.",
   },
@@ -377,7 +377,7 @@ export const PREVIEW_SITES = [
     title: "BadutZY Website",
     description: "Personal portfolio website",
     url: "https://badutzy.vercel.app/",
-    color: "#d8700e",
+    color: "#727272",
     badge: "React · TypeScript · Supabase",
   },
   {
