@@ -41,7 +41,7 @@ const id: Dictionary = {
     tagline: "Rizky Maulana Putra, seorang programmer pemula. Membuat website, mod, dan game.",
     copyright: "\u00A9 {{year}} Rizky (BadutZY) - hak cipta dilindungi",
     builtWith: "dibuat dengan",
-    forKimmy: "untuk Kimmy",
+    forKimmy: "Untuk Istriku",
   },
 
   loading: {
@@ -356,7 +356,7 @@ const id: Dictionary = {
 
   wife: {
     kicker: "05 / wife",
-    title: "KIMMY",
+    title: "ISTRI",
     description: "{{name}} ({{alias}}) adalah Istri Rizky.",
     photoAlt: "Foto {{name}}",
     paragraph:
@@ -370,18 +370,13 @@ const id: Dictionary = {
       height: "Tinggi",
       status: "Status",
     },
-    liveSection: {
-      tag: "Live Kimmy",
-      title: "STATUS LIVE",
-      description: "Status live real-time dari IDN Live dan Showroom, dicek otomatis setiap menit.",
-    },
     replaySection: {
       tag: "Replay YouTube",
       title: "REPLAY TERBARU",
     },
     gallerySection: {
       tag: "GALERI",
-      title: "FOTO KIMMY",
+      title: "FOTO ISTRI",
       photoAlt: "Foto {{alias}} {{n}}",
     },
     aboutMe: "Tentang Saya",

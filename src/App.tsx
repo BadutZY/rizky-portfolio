@@ -15,6 +15,16 @@ import ContactPage from "@/pages/contact/ContactPage";
 
 const queryClient = new QueryClient();
 
+function WifeErinePage() {
+  return <WifePage person="erine" />;
+}
+function WifeKimmyPage() {
+  return <WifePage person="kimmy" />;
+}
+function WifeFritzyPage() {
+  return <WifePage person="fritzy" />;
+}
+
 function Page({
   title,
   description,
@@ -103,11 +113,35 @@ export default function App() {
               path="wife"
               element={
                 <Page
-                  title="Wife - Rizky (BadutZY)"
-                  description="Kenali Victoria Kimberly Lukitama (Kimmy), Rizky's Wife, profil singkat dan galeri foto."
+                  title="Wife (K) - Rizky (BadutZY)"
+                  description="Kenali Kimmy."
                   ogTitle="Kimmy - BadutZY's Wife"
                   ogDescription="Profil singkat dan galeri foto Kimmy."
-                  Component={WifePage}
+                  Component={WifeKimmyPage}
+                />
+              }
+            />
+            <Route
+              path="wife/erine"
+              element={
+                <Page
+                  title="Wife (E) - Rizky (BadutZY)"
+                  description="Kenali Erine."
+                  ogTitle="Erine"
+                  ogDescription="Profil singkat dan galeri foto Erine."
+                  Component={WifeErinePage}
+                />
+              }
+            />
+            <Route
+              path="wife/fritzy"
+              element={
+                <Page
+                  title="Wife (F) - Rizky (BadutZY)"
+                  description="Kenali Fritzy."
+                  ogTitle="Fritzy"
+                  ogDescription="Profil singkat dan galeri foto Fritzy."
+                  Component={WifeFritzyPage}
                 />
               }
             />

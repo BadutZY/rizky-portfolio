@@ -5,6 +5,8 @@
 // place, separate from the actual page content/copy.
 // ─────────────────────────────────────────────────────────────────────────
 
+import type { WifePersonKey } from "@/data/wife";
+
 import rizkyAvatar from "@/assets/rizky/rizky.png";
 import setupPhoto from "@/assets/rizky/setup.jpeg";
 
@@ -35,19 +37,47 @@ import keyboardImg from "@/assets/rizky/equipment/keyboard.png";
 import mouseImg from "@/assets/rizky/equipment/mouse.webp";
 import headsetImg from "@/assets/rizky/equipment/headset.png";
 
-import kimmy1 from "@/assets/rizky/wife/kimmy1.jfif";
-import kimmy2 from "@/assets/rizky/wife/kimmy2.jfif";
-import kimmy3 from "@/assets/rizky/wife/kimmy3.jfif";
-import kimmy4 from "@/assets/rizky/wife/kimmy4.jfif";
-import kimmy5 from "@/assets/rizky/wife/kimmy5.jfif";
-import kimmy6 from "@/assets/rizky/wife/kimmy6.jfif";
-import kimmy7 from "@/assets/rizky/wife/kimmy7.jfif";
-import kimmy8 from "@/assets/rizky/wife/kimmy8.jfif";
-import kimmy9 from "@/assets/rizky/wife/kimmy9.jfif";
-import kimmy10 from "@/assets/rizky/wife/kimmy10.jfif";
-import kimmy11 from "@/assets/rizky/wife/kimmy11.jfif";
-import kimmy12 from "@/assets/rizky/wife/kimmy12.jfif";
-import kimmy13 from "@/assets/rizky/wife/kimmy13.jfif";
+import erine1 from "@/assets/rizky/wife/erine/erine1.jfif";
+import erine2 from "@/assets/rizky/wife/erine/erine2.jfif";
+import erine3 from "@/assets/rizky/wife/erine/erine3.jfif";
+import erine4 from "@/assets/rizky/wife/erine/erine4.jfif";
+import erine5 from "@/assets/rizky/wife/erine/erine5.jfif";
+import erine6 from "@/assets/rizky/wife/erine/erine6.jfif";
+import erine7 from "@/assets/rizky/wife/erine/erine7.jfif";
+import erine8 from "@/assets/rizky/wife/erine/erine8.jfif";
+import erine9 from "@/assets/rizky/wife/erine/erine9.jfif";
+import erine10 from "@/assets/rizky/wife/erine/erine10.jfif";
+import erine11 from "@/assets/rizky/wife/erine/erine11.jfif";
+import erine12 from "@/assets/rizky/wife/erine/erine12.jfif";
+import erine13 from "@/assets/rizky/wife/erine/erine13.jfif";
+
+import kimmy1 from "@/assets/rizky/wife/kimmy/kimmy1.jfif";
+import kimmy2 from "@/assets/rizky/wife/kimmy/kimmy2.jfif";
+import kimmy3 from "@/assets/rizky/wife/kimmy/kimmy3.jfif";
+import kimmy4 from "@/assets/rizky/wife/kimmy/kimmy4.jfif";
+import kimmy5 from "@/assets/rizky/wife/kimmy/kimmy5.jfif";
+import kimmy6 from "@/assets/rizky/wife/kimmy/kimmy6.jfif";
+import kimmy7 from "@/assets/rizky/wife/kimmy/kimmy7.jfif";
+import kimmy8 from "@/assets/rizky/wife/kimmy/kimmy8.jfif";
+import kimmy9 from "@/assets/rizky/wife/kimmy/kimmy9.jfif";
+import kimmy10 from "@/assets/rizky/wife/kimmy/kimmy10.jfif";
+import kimmy11 from "@/assets/rizky/wife/kimmy/kimmy11.jfif";
+import kimmy12 from "@/assets/rizky/wife/kimmy/kimmy12.jfif";
+import kimmy13 from "@/assets/rizky/wife/kimmy/kimmy13.jfif";
+
+import fritzy1 from "@/assets/rizky/wife/fritzy/fritzy1.jfif";
+import fritzy2 from "@/assets/rizky/wife/fritzy/fritzy2.jfif";
+import fritzy3 from "@/assets/rizky/wife/fritzy/fritzy3.jfif";
+import fritzy4 from "@/assets/rizky/wife/fritzy/fritzy4.jfif";
+import fritzy5 from "@/assets/rizky/wife/fritzy/fritzy5.jfif";
+import fritzy6 from "@/assets/rizky/wife/fritzy/fritzy6.jfif";
+import fritzy7 from "@/assets/rizky/wife/fritzy/fritzy7.jfif";
+import fritzy8 from "@/assets/rizky/wife/fritzy/fritzy8.jfif";
+import fritzy9 from "@/assets/rizky/wife/fritzy/fritzy9.jfif";
+import fritzy10 from "@/assets/rizky/wife/fritzy/fritzy10.jfif";
+import fritzy11 from "@/assets/rizky/wife/fritzy/fritzy11.jfif";
+import fritzy12 from "@/assets/rizky/wife/fritzy/fritzy12.jfif";
+import fritzy13 from "@/assets/rizky/wife/fritzy/fritzy13.jfif";
 
 import idnLogoImg from "@/assets/rizky/icons/idn-logo.png";
 import showroomLogoImg from "@/assets/rizky/icons/showroom-logo.png";
@@ -112,8 +142,23 @@ export const equipmentImages: Record<string, string> = {
   headset: headsetImg,
 };
 
-// ─── Wife page: photo gallery ───────────────────────────────────────────────
-export const wifePhotos = [
+const erinePhotos = [
+  erine1,
+  erine2,
+  erine3,
+  erine4,
+  erine5,
+  erine6,
+  erine7,
+  erine8,
+  erine9,
+  erine10,
+  erine11,
+  erine12,
+  erine13,
+];
+
+const kimmyPhotos = [
   kimmy1,
   kimmy2,
   kimmy3,
@@ -128,6 +173,28 @@ export const wifePhotos = [
   kimmy12,
   kimmy13,
 ];
+
+const fritzyPhotos = [
+  fritzy1,
+  fritzy2,
+  fritzy3,
+  fritzy4,
+  fritzy5,
+  fritzy6,
+  fritzy7,
+  fritzy8,
+  fritzy9,
+  fritzy10,
+  fritzy11,
+  fritzy12,
+  fritzy13,
+];
+
+export const wifePhotos: Record<WifePersonKey, string[]> = {
+  erine: erinePhotos,
+  kimmy: kimmyPhotos,
+  fritzy: fritzyPhotos,
+};
 
 // ─── Wife page: live-status platform logos ─────────────────────────────────
 export const platformLogos = {

@@ -2,10 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PageHeader, PageShell } from "@/components/layout/PageShell";
 import { PixelArrowRight, PixelHeart } from "@/components/common/PixelIcon";
-import { wife } from "@/data/wife";
-import { platformLogos, wifePhotos } from "@/data/image";
+import { wifeProfiles, type WifePersonKey } from "@/data/wife";
+import { wifePhotos } from "@/data/image";
 import { YOUTUBE_CONFIG } from "@/config/youtubeConfig";
-import KimmyLiveStatus from "./components/KimmyLiveStatus";
 import LatestReplayCard from "./components/LatestReplayCard";
 import SocialIcon from "@/components/common/SocialIcon";
 import { PhotoLightbox } from "./components/PhotoLightbox";
@@ -21,9 +20,13 @@ const BIO_KEY_MAP: Record<string, string> = {
   Status: "status",
 };
 
-export default function WifePage() {
+export default function WifePage({ person }: { person: WifePersonKey }) {
   const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const wife = wifeProfiles[person];
+  const photos = wifePhotos[person];
+  const playlists = YOUTUBE_CONFIG.wifePlaylists[person];
 
   return (
     <PageShell>
@@ -37,7 +40,7 @@ export default function WifePage() {
         <div className="grid items-start gap-10 md:grid-cols-[0.8fr_1.2fr]">
           <div className="pixel-panel anim-pop p-3 md:sticky md:top-24">
             <img
-              src={wifePhotos[0]}
+              src={photos[0]}
               alt={wife.name}
               loading="lazy"
               className="block w-full object-cover"
@@ -88,24 +91,6 @@ export default function WifePage() {
         </div>
       </section>
 
-      <section className="border-y-4 border-border bg-surface">
-        <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-          <div className="mb-10">
-            <span className="pixel-tag pixel-tag-accent">{t("wife.liveSection.tag")}</span>
-            <h2
-              className="pixel-title mt-5 text-foreground"
-              style={{ fontSize: "clamp(16px, 4.2vw, 26px)" }}
-            >
-              {t("wife.liveSection.title")}
-            </h2>
-            <p className="body-text mt-3 max-w-xl text-muted-foreground">
-              {t("wife.liveSection.description")}
-            </p>
-          </div>
-          <KimmyLiveStatus idnLogo={platformLogos.idn} showroomLogo={platformLogos.showroom} />
-        </div>
-      </section>
-
       <section className="mx-auto w-full max-w-6xl px-4 py-11 sm:px-6 sm:py-20">
         <div className="grid items-start ">
           <div className="mb-10">
@@ -118,8 +103,8 @@ export default function WifePage() {
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
-            <LatestReplayCard playlistId={YOUTUBE_CONFIG.idnPlaylistId} label="IDN Live" />
-            <LatestReplayCard playlistId={YOUTUBE_CONFIG.showroomPlaylistId} label="Showroom" />
+            <LatestReplayCard playlistId={playlists.idnPlaylistId} label="IDN Live" />
+            <LatestReplayCard playlistId={playlists.showroomPlaylistId} label="Showroom" />
           </div>
         </div>
       </section>
@@ -137,7 +122,7 @@ export default function WifePage() {
           </div>
 
           <div className="columns-2 gap-1 sm:columns-3 md:columns-4">
-            {wifePhotos.map((src, i) => (
+            {photos.map((src, i) => (
               <button
                 key={src}
                 type="button"
@@ -159,7 +144,7 @@ export default function WifePage() {
 
       {openIndex !== null && (
         <PhotoLightbox
-          photos={wifePhotos}
+          photos={photos}
           altPrefix={t("wife.photoAlt", { name: wife.alias })}
           index={openIndex}
           onClose={() => setOpenIndex(null)}

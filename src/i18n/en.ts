@@ -45,7 +45,7 @@ const en = {
     tagline: "Rizky Maulana Putra, a beginner programmer. Building websites, mods, and games.",
     copyright: "\u00A9 {{year}} Rizky (BadutZY) - all rights reserved",
     builtWith: "built with",
-    forKimmy: "for Kimmy",
+    forKimmy: "for My Wife",
   },
 
   loading: {
@@ -357,7 +357,7 @@ const en = {
 
   wife: {
     kicker: "05 / wife",
-    title: "KIMMY",
+    title: "Wifes",
     description: "{{name}} ({{alias}}) is Rizky's Wife.",
     photoAlt: "Photo of {{name}}",
     paragraph:
@@ -371,19 +371,13 @@ const en = {
       height: "Height",
       status: "Status",
     },
-    liveSection: {
-      tag: "Live Kimmy",
-      title: "LIVE STATUS",
-      description:
-        "Real-time live status from IDN Live and Showroom, checked automatically every minute.",
-    },
     replaySection: {
       tag: "YouTube Replay",
       title: "LATEST REPLAY",
     },
     gallerySection: {
       tag: "GALLERY",
-      title: "KIMMY PHOTOS",
+      title: "WIFES PHOTOS",
       photoAlt: "Photo of {{alias}} {{n}}",
     },
     aboutMe: "About Me",

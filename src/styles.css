@@ -442,6 +442,88 @@
     transform: translateX(-50%) translateY(0);
   }
 
+  /* ── Item "Wife" pada dock: hover/focus memunculkan 3 tombol E / K / F
+     berderet mendatar di atasnya (satu untuk tiap profil). ── */
+  .dock-item-wife { padding: 0; }
+  .dock-item-hit {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  /* tooltip teks "Wife" bawaan disembunyikan khusus di item ini supaya
+     tidak bertumpuk dengan flyout E/K/F; nama profil tetap ada lewat
+     aria-label pada masing-masing tombol untuk aksesibilitas. */
+  .dock-item-wife .dock-tooltip { display: none; }
+
+  .dock-wife-flyout {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(6px);
+    transition:
+      opacity 0.16s cubic-bezier(0.22, 0.9, 0.25, 1),
+      transform 0.16s cubic-bezier(0.22, 0.9, 0.25, 1);
+    z-index: 5;
+  }
+  .dock-item-wife:hover .dock-wife-flyout,
+  .dock-item-wife:focus-within .dock-wife-flyout,
+  .dock-wife-flyout[data-pinned="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .dock-wife-flyout-btn {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    flex: none;
+    border: 3px solid var(--border);
+    background: var(--surface);
+    color: var(--foreground);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 3px 3px 0 0 var(--pixel-shadow);
+    transition:
+      transform 0.12s cubic-bezier(0.22, 0.9, 0.25, 1),
+      box-shadow 0.12s cubic-bezier(0.22, 0.9, 0.25, 1),
+      background 0.12s cubic-bezier(0.22, 0.9, 0.25, 1),
+      color 0.12s cubic-bezier(0.22, 0.9, 0.25, 1);
+  }
+  .dock-wife-flyout-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 var(--pixel-shadow);
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+  .dock-wife-flyout-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 0 var(--pixel-shadow);
+  }
+  .dock-wife-flyout-btn[data-active="true"] {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+
   .dock-toggle {
     display: grid;
     place-items: center;
@@ -468,6 +550,8 @@
     .dock-item { width: 44px; height: 44px; margin-right: 6px; }
     .dock-toggle { width: 44px; height: 44px; }
     .dock-tooltip { font-size: 8px; padding: 6px 8px; }
+    .dock-wife-flyout { bottom: calc(100% + 10px); gap: 5px; }
+    .dock-wife-flyout-btn { width: 30px; height: 30px; font-size: 10px; }
   }
 
   @media (max-width: 480px) {
@@ -476,6 +560,8 @@
     .dock-pill { padding: 4px; }
     .dock-pill[data-open="false"] { transform: translateX(calc(50vw - 62px)); }
     .dock-tooltip { font-size: 7px; padding: 5px 6px; }
+    .dock-wife-flyout { bottom: calc(100% + 8px); gap: 4px; }
+    .dock-wife-flyout-btn { width: 26px; height: 26px; font-size: 9px; }
     .theme-toggle-fixed { top: 12px; right: 12px; width: 36px; height: 36px; }
     .lang-toggle-fixed { top: 12px; right: 54px; width: 36px; height: 36px; }
     .lang-toggle-fixed .pixel-label { font-size: 9px; }
