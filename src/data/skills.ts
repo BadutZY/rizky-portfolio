@@ -183,6 +183,14 @@ export const techStackLogos: TechLogo[] = [
   { name: "Supabase", src: "https://skillicons.dev/icons?i=supabase" },
 ];
 
+// Lookup version of `techStackLogos` (name -> icon src), so other pages
+// (e.g. the project modals) can reuse the exact same icons instead of
+// duplicating URLs. "fabric"/"forge" placeholders are excluded since those
+// are resolved to local asset icons elsewhere (see `loaderIcons`).
+export const techLogoMap: Record<string, string> = Object.fromEntries(
+  techStackLogos.filter((t) => t.src !== "fabric" && t.src !== "forge").map((t) => [t.name, t.src]),
+);
+
 // Things currently being learned. Not currently rendered on any page, kept
 // here (ready to use) for a future "Currently Learning" section.
 export const currentlyLearning = [

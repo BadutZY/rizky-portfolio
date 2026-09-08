@@ -20,19 +20,23 @@ import {
 import MarkdownRenderer from "@/pages/project/components/MarkdownRenderer";
 import type { GameProjectData, SocialLink, TeamMemberData } from "@/data/project";
 import { useLanguage } from "@/lib/i18n";
+import { techLogoMap } from "@/data/skills";
 
 interface GameProjectModalProps {
   project: GameProjectData | null;
   onClose: () => void;
 }
 
-const TECH_LOGOS: Record<string, string> = {
-  "C#": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
-  Unity: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg",
+// Techs that can show up in a game project's `lang` but aren't part of the
+// "TECH STACK" grid on the Skill page yet. `techLogoMap` (same icons as the
+// Skill page) is spread on top so any overlapping tech uses that exact icon.
+const EXTRA_TECH_LOGOS: Record<string, string> = {
   "C++": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
   Python: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
   Godot: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg",
 };
+
+const TECH_LOGOS: Record<string, string> = { ...EXTRA_TECH_LOGOS, ...techLogoMap };
 
 // ── Small brand social icons (kept as accurate vector logos) ──────────
 const YouTubeIcon = () => (

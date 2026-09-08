@@ -1,4 +1,4 @@
-import { projectImages, teamMembers, boxSiegeVideo } from "@/data/image";
+import { projectImages, teamMembers, boxSiegeVideo, trashCollectorVideo } from "@/data/image";
 
 // Local (non-Modrinth) mod files — bundled with this build so the mod can be
 // downloaded even though it isn't published publicly on Modrinth.
@@ -112,6 +112,17 @@ export const REGULAR_WEBSITE_PROJECTS: WebsiteProject[] = [
   },
   {
     id: 9,
+    slug: "quiz-materi",
+    title: "Quiz Materi",
+    category: "Website",
+    lang: "TypeScript / React / Supabase",
+    image: projectImages["quiz-materi"]!,
+    link: "https://quiz-materi.vercel.app/",
+    description: "Quiz Website",
+    fullDescription: "A quiz website featuring 5 topics that allows for multiplayer gameplay.",
+  },
+  {
+    id: 10,
     slug: "werewolf-card",
     title: "Werewolf Card",
     category: "Website",
@@ -119,7 +130,18 @@ export const REGULAR_WEBSITE_PROJECTS: WebsiteProject[] = [
     image: projectImages["werewolf-card"]!,
     link: "https://card-werewolf.vercel.app/",
     description: "Game Website",
-    fullDescription: "website for werewolf card role selection.",
+    fullDescription: "Website for werewolf card role selection.",
+  },
+  {
+    id: 11,
+    slug: "solar-system",
+    title: "Solar System",
+    category: "Website",
+    lang: "JavaScript / React",
+    image: projectImages["solar-system"]!,
+    link: "https://solarsystemweb.vercel.app/",
+    description: "Solar System Website",
+    fullDescription: "The planets in the Milky Way.",
   },
 ];
 
@@ -148,10 +170,36 @@ export const CONTRIBUTION_WEBSITE_PROJECTS: WebsiteProject[] = [
     image: projectImages["box-siege-website"]!,
     link: "https://boxsiege.vercel.app/",
     description: "Game Website",
-    fullDescription: "website to introduce games.",
+    fullDescription: "Website to introduce game.",
   },
   {
     id: 102,
+    slug: "badutzy-studio",
+    title: "BadutZY Studio",
+    category: "Website",
+    isContribution: true,
+    role: "Game & Web Developer",
+    lang: "TypeScript / React ",
+    image: projectImages["badutzy-studio"]!,
+    link: "https://badutzy-studio.vercel.app/",
+    description: "Game Website",
+    fullDescription: "Website for game developers.",
+  },
+  {
+    id: 103,
+    slug: "trash-collector",
+    title: "Trash Collector Game",
+    category: "Website",
+    isContribution: true,
+    role: "Game & Web Developer",
+    lang: "TypeScript / React",
+    image: projectImages["trash-collector"]!,
+    link: "https://trashcollector.vercel.app/",
+    description: "Game Website",
+    fullDescription: "Website to introduce game.",
+  },
+  {
+    id: 104,
     slug: "chained-together",
     title: "Chained Together",
     category: "Website",
@@ -353,6 +401,51 @@ export const CONTRIBUTION_GAME_PROJECTS: GameProjectData[] = [
       storage: "500 MB available space",
     },
   },
+
+  {
+    id: 301,
+    title: "Trash Collector Game",
+    category: "Game",
+    isContribution: true,
+    role: "Game Developer",
+    developerTeam: {
+      name: "BadutZY Studio",
+      logo: teamMembers.badutzyStudio,
+      website: "https://badutzy-studio.vercel.app/",
+      members: [
+        {
+          avatar: teamMembers.badutzy,
+          name: "BadutZY",
+          role: "Game Programmer",
+          socials: [
+            { platform: "github", url: "https://github.com/BadutZY" },
+            { platform: "instagram", url: "https://www.instagram.com/rzky.mp_36/" },
+            { platform: "website", url: "https://badutzy.vercel.app/" },
+          ],
+        },
+      ],
+    },
+    lang: "Java / Gradle",
+    image: projectImages["trash-collector"]!,
+    video: trashCollectorVideo,
+    link: "https://trashcollector.vercel.app/",
+    description: "Collect the trashs",
+    fullDescription:
+      "A simple gameplay loop. Explore the platforms, gather trash, and turn coins into real progress.",
+    genre: ["PvP"],
+    platform: ["Windows"],
+    engine: "Unity",
+    version: "2.3.0",
+    fileSize: "110 MB",
+    features: ["Built entirely with java only", "Developed by a single developer"],
+    minSpecs: {
+      os: "Windows 10/11",
+      processor: "Dual Core 2GHz",
+      memory: "6 GB RAM",
+      graphics: "512MB VRAM",
+      storage: "500 MB available space",
+    },
+  },
 ];
 
 export const categories = [
@@ -382,10 +475,10 @@ export const PREVIEW_SITES = [
   },
   {
     id: 3,
-    title: "Box Siege Website",
-    description: "Game website",
-    url: "https://boxsiege.vercel.app/",
-    color: "#0871c7",
-    badge: "React · Tailwind · TypeScript",
+    title: "BadutZY Studio",
+    description: "Website for Game Developer",
+    url: "https://badutzy-studio.vercel.app/",
+    color: "#2d095d",
+    badge: "React · TypeScript",
   },
 ] as const;

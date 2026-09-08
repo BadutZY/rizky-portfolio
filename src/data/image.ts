@@ -22,6 +22,10 @@ import fritzyForce from "@/assets/rizky/project/fritzyforce-website.png";
 import valoGuess from "@/assets/rizky/project/valo-guess-who.png";
 import jkt48Guess from "@/assets/rizky/project/jkt48guesswho.png";
 import werewolfCard from "@/assets/rizky/project/werewolf-card.png";
+import solarSystem from "@/assets/rizky/project/solar-system.png";
+import badutzyStudio from "@/assets/rizky/project/badutzy-studio.png";
+import trashCollector from "@/assets/rizky/project/trash-collector.png";
+import quizMateri from "@/assets/rizky/project/quiz-materi.png";
 import modIcon from "@/assets/rizky/project/mod-icon.png";
 
 import cpuImg from "@/assets/rizky/equipment/cpu.png";
@@ -87,11 +91,13 @@ import neoforgeIconImg from "@/assets/rizky/loader/neoforge.png";
 import quiltIconImg from "@/assets/rizky/loader/quilt.png";
 
 import boxSiegeVideoFile from "@/assets/rizky/game/boxsiege.mp4";
+import trashCollectorPreview from "@/assets/rizky/game/trash-collector.mp4";
 
 import equinoxMember from "@/assets/rizky/members/eqnox.jpg";
 import badutzyMember from "@/assets/rizky/members/BadutZY.jpg";
 import ariMember from "@/assets/rizky/members/Ari.jpg";
 import swimmingFoxMember from "@/assets/rizky/members/SwimmingFOX.jpg";
+import badutzyStudioMember from "@/assets/rizky/members/badutzy-studio.png";
 
 import ytRaavfyCover from "@/assets/rizky/playlist/yt-music/Rv.jpg";
 import ytEnglishCover from "@/assets/rizky/playlist/yt-music/Hendem.jpg";
@@ -124,6 +130,10 @@ export const projectImages: Record<string, string> = {
   "jkt48-guess-who": jkt48Guess,
   "werewolf-card": werewolfCard,
   "spawn-all-mod": modIcon,
+  "solar-system" : solarSystem,
+  "badutzy-studio" : badutzyStudio,
+  "trash-collector" : trashCollector,
+  "quiz-materi" : quizMateri,
 };
 
 // ─── Equipment page: hardware photos ───────────────────────────────────────
@@ -212,6 +222,7 @@ export const loaderIcons = {
 
 // ─── Project page: Box Siege trailer ───────────────────────────────────────
 export const boxSiegeVideo = boxSiegeVideoFile;
+export const trashCollectorVideo = trashCollectorPreview;
 
 // ─── Project page: team member avatars ─────────────────────────────────────
 export const teamMembers = {
@@ -219,6 +230,8 @@ export const teamMembers = {
   badutzy: badutzyMember,
   ari: ariMember,
   swimmingFox: swimmingFoxMember,
+
+  badutzyStudio: badutzyStudioMember,
 };
 
 // ─── About page: playlist cover art ────────────────────────────────────────

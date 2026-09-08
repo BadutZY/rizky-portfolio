@@ -16,6 +16,7 @@ import { loaderIcons } from "@/data/image";
 import type { ModProjectData, ModDownloadEntry, ReleaseType, ModStatus } from "@/data/project";
 import { STATUS_LABEL } from "@/pages/project/components/ModCard";
 import { useLanguage } from "@/lib/i18n";
+import { techLogoMap } from "@/data/skills";
 
 interface ModProjectModalProps {
   project: ModProjectData | null;
@@ -35,7 +36,7 @@ const TECH_ICONS: Record<string, string> = {
   Forge: loaderIcons.forge,
   NeoForge: loaderIcons.neoforge,
   Quilt: loaderIcons.quilt,
-  Java: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+  Java: techLogoMap["Java"] ?? "",
 };
 
 function formatDownloads(n: number): string {
